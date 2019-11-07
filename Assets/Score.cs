@@ -26,15 +26,7 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        
-		
-        if (this.total >= 0)
-        {
-            score = total.ToString();
-
-            this.scoreText.GetComponent<Text>().text =  score;
-        }
-
+     
 	}
 
     void OnCollisionEnter(Collision other)
@@ -56,8 +48,12 @@ public class Score : MonoBehaviour {
             {
                 this.total += 2;
             }
+        if (other.gameObject.tag != "Untagged" && (other.gameObject.tag != "LeftFripperTag"  && other.gameObject.tag != "RightFripperTag") )
+        {
 
-
+            Debug.LogFormat("Score: " + total.ToString());
+            this.scoreText.GetComponent<Text>().text = total.ToString();
+        }
 
 
     }
